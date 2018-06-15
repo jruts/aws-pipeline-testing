@@ -9,21 +9,20 @@ version: 0.2
      # key: "value"
 
 phases:
-  #install:
-    #commands:
-      # - command
-      # - command
+  install:
+    commands:
+      - pip install aws-sam-cli
   #pre_build:
     #commands:
       # - command
       # - command
   build:
     commands:
-      - pip install aws-sam-cli
-      - sam --version
+      - sam package --template-file template.yaml --s3-bucket grimlocks-testing --output-template-file packaged.yaml
+      # - run tests here 
   #post_build:
-    #commands:
-      # - command
+    commands:
+      - sam deploy --template-file packaged.yaml --stack-name $CODEBUILD_SOURCE_VERSION --capabilities CAPABILITY_IAM
       # - command
 #artifacts:
   #files:
@@ -34,23 +33,3 @@ phases:
 #cache:
   #paths:
     # - paths
-Cancel update build specification
-Build specification
-Use the buildspec.yml in the source code root directory
-Insert build commands
-Buildspec name
-Type your buildspec name
-Certificate
-If you have a self-signed certificate or a certificate signed by a certification authority, choose the option to install it from your S3 bucket.
-Do not install any certificate
-Install certificate from your S3
-Artifacts: Where to put the artifacts from this build project
-Type*
-
-Cache
-Type*
-
-Service role
-Specify a service role that enables AWS CodeBuild to call dependent AWS services on your behalf. Learn more.
-
-Create a role
