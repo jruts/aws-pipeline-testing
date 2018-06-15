@@ -3,21 +3,29 @@ AWSTemplateFormatVersion: '2010-09-09'
 Transform: AWS::Serverless-2016-10-31
 Description: Simple example of Lambda Deployments with SAM.
 Resources:
-  LambdaFunctionOne:
+  HelloWorldFunction:
     Type: AWS::Serverless::Function
     Properties:
-      Handler: services/lambda1/index.handler
-      Runtime: nodejs8.11
       CodeUri: services/lambda1/
+      Handler: index.handler
+      Runtime: nodejs8.11
       Events:
-        GetFunctionOne:
+        HelloWorld:
           Type: Api
           Properties:
-            Path: /resource/
+            Path: /hello
             Method: get
 
 Outputs:
   ApiURL:
-    Description: "API endpoint URL for X environment"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/resource/"
+    Description: "API Gateway endpoint URL for Prod stage for Hello World function"
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/hello/"
+
+  HelloWorldFunction:
+      Description: "Hello World Lambda Function ARN"
+      Value: !GetAtt HelloWorldFunction.Arn
+
+  HelloWorldFunctionIamRole:
+    Description: "Implicit IAM Role created for Hello World function"
+    Value: !GetAtt HelloWorldFunctionRole.Arn  
 
