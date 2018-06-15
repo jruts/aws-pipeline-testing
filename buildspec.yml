@@ -19,7 +19,7 @@ phases:
     commands:
       - aws cloudformation package --template-file template.yaml --s3-bucket grimlocks-testing --output-template-file packaged.yaml
       # - run tests here 
-      - aws cloudformation deploy --template-file packaged.yaml --stack-name fp-search-$CODEBUILD_SOURCE_VERSION --capabilities CAPABILITY_IAM
+      - aws cloudformation deploy --template-file packaged.yaml --stack-name N$CODEBUILD_SOURCE_VERSION --capabilities CAPABILITY_IAM
   #post_build:
     #commands:
       # - command
