@@ -9,16 +9,15 @@ version: 0.2
      # key: "value"
 
 phases:
-  install:
-    commands:
-      - pip install aws-sam-cli
+  #install:
+    #commands:
   #pre_build:
     #commands:
       # - command
       # - command
   build:
     commands:
-      - sam package --template-file template.yaml --s3-bucket grimlocks-testing --output-template-file packaged.yaml
+      - aws cloudformation package --template-file template.yaml --s3-bucket grimlocks-testing --output-template-file packaged.yaml
       # - run tests here 
       - sam deploy --template-file packaged.yaml --stack-name $CODEBUILD_SOURCE_VERSION --capabilities CAPABILITY_IAM
   #post_build:
