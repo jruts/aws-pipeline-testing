@@ -6,7 +6,7 @@ Resources:
   HelloWorldFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: services/lambda1/
+      CodeUri: services/hello_world/
       Handler: index.handler
       Runtime: nodejs8.11
       Events:
