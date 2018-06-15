@@ -8,7 +8,7 @@ Resources:
     Properties:
       CodeUri: services/hello_world/
       Handler: index.handler
-      Runtime: nodejs8.11
+      Runtime: nodejs8.10
       Events:
         HelloWorld:
           Type: Api
