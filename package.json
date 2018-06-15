@@ -1,0 +1,20 @@
+{
+  "name": "aws-pipeline-testing",
+  "version": "1.0.0",
+  "description": "Personal testing of AWS pipeline and SAM",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jruts/aws-pipeline-testing.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jruts/aws-pipeline-testing/issues"
+  },
+  "homepage": "https://github.com/jruts/aws-pipeline-testing#readme"
+}
