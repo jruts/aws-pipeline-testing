@@ -1,8 +1,7 @@
 version: 0.2
 
-env:
-  variables:
-     FP_PR_BRANCH_NAME: "value"
+#env:
+  #variables:
      # key: "value"
   #parameter-store:
      # key: "value"
@@ -11,7 +10,8 @@ env:
 phases:
   install:
     commands: 
-      - git branch
+      - EXPORT PR_UNIQUE_CODE=`echo $CODEBUILD_SOURCE_VERSION | sed 's/\//-/`
+      - echo $PR_UNIQUE_CODE
   #pre_build:
     #commands:
       #- sh scripts/envvars.sh    
