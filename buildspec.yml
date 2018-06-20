@@ -9,17 +9,18 @@ version: 0.2
      # key: "value"
 
 phases:
-  #install:
-    #commands:
+  # install:
+    # commands:
   #pre_build:
     #commands:
       # - command
-      # - command
+      # - command 
   build:
     commands:
+      - printenv
       - aws cloudformation package --template-file template.yaml --s3-bucket grimlocks-testing --output-template-file packaged.yaml
       # - run tests here 
-      - aws cloudformation deploy --template-file packaged.yaml --stack-name B$CODEBUILD_SOURCE_VERSION --capabilities CAPABILITY_IAM
+      - aws cloudformation deploy --template-file packaged.yaml --stack-name $CODEBUILD_SOURCE_VERSION --capabilities CAPABILITY_IAM
   #post_build:
     #commands:
       # - command
