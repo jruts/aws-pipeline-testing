@@ -4,7 +4,7 @@ phases:
   install:
     commands: 
       - export PR_UNIQUE_CODE=`echo FP-$CODEBUILD_SOURCE_VERSION | sed 's/\///'`
-      - echo $PR_UNIQUE_CODE 
+      - printenv
   build:
     commands:
       - aws cloudformation package --template-file template.yaml --s3-bucket grimlocks-testing --output-template-file packaged.yaml
