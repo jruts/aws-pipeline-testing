@@ -1,34 +1,11 @@
 version: 0.2
 
-#env:
-  #variables:
-     # key: "value"
-     # key: "value"
-  #parameter-store:
-     # key: "value"
-     # key: "value"
-
 phases:
-  #install:
-    #commands:
-  #pre_build:
-    #commands:
-      # - command
-      # - command
+  install:
+    commands: 
+      - export PR_UNIQUE_CODE=`echo FP-$CODEBUILD_SOURCE_VERSION | sed 's/\///'`
+      - printenv
   build:
     commands:
       - aws cloudformation package --template-file template.yaml --s3-bucket grimlocks-testing --output-template-file packaged.yaml
-      # - run tests here 
-      - aws cloudformation deploy --template-file packaged.yaml --stack-name B$CODEBUILD_SOURCE_VERSION --capabilities CAPABILITY_IAM
-  #post_build:
-    #commands:
-      # - command
-#artifacts:
-  #files:
-    # - location
-    # - location
-  #discard-paths: yes
-  #base-directory: location
-#cache:
-  #paths:
-    # - paths
+      - aws cloudformation deploy --template-file packaged.yaml --stack-name $PR_UNIQUE_CODE --capabilities CAPABILITY_IAM
