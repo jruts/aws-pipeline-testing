@@ -11,10 +11,7 @@ version: 0.2
 phases:
   install:
     commands: 
-      - printenv
-  #pre_build:
-    commands:
-      - printenv
+      - sh scripts/envvars.sh
   build:
     commands:
       - printenv
