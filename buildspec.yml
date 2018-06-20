@@ -18,9 +18,10 @@ phases:
       # - command
   build:
     commands:
-      - sam package --template-file template.yaml --s3-bucket grimlocks-testing --output-template-file packaged.yaml
+      - printenv
+      - aws cloudformation package --template-file template.yaml --s3-bucket grimlocks-testing --output-template-file packaged.yaml
       # - run tests here 
-      - sam deploy --template-file packaged.yaml --stack-name WTFITS --capabilities CAPABILITY_IAM
+      - aws cloudformation deploy --template-file packaged.yaml --stack-name WTFITS --capabilities CAPABILITY_IAM
   #post_build:
     #commands:
       # - command
