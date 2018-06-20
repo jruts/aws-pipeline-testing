@@ -9,18 +9,18 @@ version: 0.2
      # key: "valuasdasdsde"
 
 phases:
-  # install:
-    # commands:
+  install:
+    commands: 
+      - printenv
   #pre_build:
-    #commands:
-      # - command
-      # - command
+    commands:
+      - printenv
   build:
     commands:
       - printenv
-      - aws cloudformation package --template-file template.yaml --s3-bucket grimlocks-testing --output-template-file packaged.yaml
+      #- aws cloudformation package --template-file template.yaml --s3-bucket grimlocks-testing --output-template-file packaged.yaml
       # - run tests here 
-      - aws cloudformation deploy --template-file packaged.yaml --stack-name fp-$CODEBUILD_SOURCE_VERSION --capabilities CAPABILITY_IAM
+      #- aws cloudformation deploy --template-file packaged.yaml --stack-name fp-$CODEBUILD_SOURCE_VERSION --capabilities CAPABILITY_IAM
   #post_build:
     #commands:
       # - command
