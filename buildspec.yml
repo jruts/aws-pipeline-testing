@@ -14,7 +14,7 @@ phases:
   #pre_build:
     #commands:
       # - command
-      # - command
+      # - command 
   build:
     commands:
       - printenv
