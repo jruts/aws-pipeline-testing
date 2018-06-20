@@ -1,8 +1,8 @@
 version: 0.2
 
-#env:
-  #variables:
-     # key: "value"
+env:
+  variables:
+     FP_PR_BRANCH_NAME: "value"
      # key: "value"
   #parameter-store:
      # key: "value"
@@ -11,14 +11,14 @@ version: 0.2
 phases:
   install:
     commands: 
-      - sh scripts/envvars.sh
+      - git branch
   #pre_build:
-    commands:
-      - sh scripts/envvars.sh
-  build:
-    commands:
-      - sh scripts/envvars.sh
-      - printenv
+    #commands:
+      #- sh scripts/envvars.sh    
+  #build:
+    #commands:
+      #- sh scripts/envvars.sh
+      #- printenv
       #- aws cloudformation package --template-file template.yaml --s3-bucket grimlocks-testing --output-template-file packaged.yaml
       # - run tests here 
       #- aws cloudformation deploy --template-file packaged.yaml --stack-name fp-$CODEBUILD_SOURCE_VERSION --capabilities CAPABILITY_IAM
