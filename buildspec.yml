@@ -10,18 +10,18 @@ version: 0.2
 phases:
   install:
     commands: 
-      - export PR_UNIQUE_CODE=`echo $CODEBUILD_SOURCE_VERSION | sed 's/\//-/'`
+      - export PR_UNIQUE_CODE=`echo FP-$CODEBUILD_SOURCE_VERSION | sed 's/\///'`
       - echo $PR_UNIQUE_CODE
   #pre_build:
     #commands:
       #- sh scripts/envvars.sh    
-  #build:
-    #commands:
+  build:
+    commands:
       #- sh scripts/envvars.sh
       #- printenv
-      #- aws cloudformation package --template-file template.yaml --s3-bucket grimlocks-testing --output-template-file packaged.yaml
+      - aws cloudformation package --template-file template.yaml --s3-bucket grimlocks-testing --output-template-file packaged.yaml
       # - run tests here 
-      #- aws cloudformation deploy --template-file packaged.yaml --stack-name fp-$CODEBUILD_SOURCE_VERSION --capabilities CAPABILITY_IAM
+      - aws cloudformation deploy --template-file packaged.yaml --stack-name $PR_UNIQUE_CODE --capabilities CAPABILITY_IAM
   #post_build:
     #commands:
       # - command
