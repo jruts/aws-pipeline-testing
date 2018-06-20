@@ -10,7 +10,7 @@ version: 0.2
 phases:
   install:
     commands: 
-      - EXPORT PR_UNIQUE_CODE=`echo $CODEBUILD_SOURCE_VERSION | sed 's/\//-/'`
+      - export PR_UNIQUE_CODE=`echo $CODEBUILD_SOURCE_VERSION | sed 's/\//-/'`
       - echo $PR_UNIQUE_CODE
   #pre_build:
     #commands:
