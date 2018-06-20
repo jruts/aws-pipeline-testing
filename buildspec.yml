@@ -1,36 +1,11 @@
 version: 0.2
 
-#env:
-  #variables:
-     # key: "value"
-  #parameter-store:
-     # key: "value"
-     # key: "valuasdasdsde"
-
 phases:
   install:
     commands: 
       - export PR_UNIQUE_CODE=`echo FP-$CODEBUILD_SOURCE_VERSION | sed 's/\///'`
-      - echo $PR_UNIQUE_CODE
-  #pre_build:
-    #commands:
-      #- sh scripts/envvars.sh    
+      - echo $PR_UNIQUE_CODE 
   build:
     commands:
-      #- sh scripts/envvars.sh
-      #- printenv
       - aws cloudformation package --template-file template.yaml --s3-bucket grimlocks-testing --output-template-file packaged.yaml
-      # - run tests here 
       - aws cloudformation deploy --template-file packaged.yaml --stack-name $PR_UNIQUE_CODE --capabilities CAPABILITY_IAM
-  #post_build:
-    #commands:
-      # - command
-#artifacts:
-  #files:
-    # - location
-    # - location
-  #discard-paths: yes
-  #base-directory: location
-#cache:
-  #paths:
-    # - paths
