@@ -12,8 +12,12 @@ phases:
   install:
     commands: 
       - sh scripts/envvars.sh
+  #pre_build:
+    commands:
+      - sh scripts/envvars.sh
   build:
     commands:
+      - sh scripts/envvars.sh
       - printenv
       #- aws cloudformation package --template-file template.yaml --s3-bucket grimlocks-testing --output-template-file packaged.yaml
       # - run tests here 
