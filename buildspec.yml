@@ -6,6 +6,6 @@ phases:
       - export PR_UNIQUE_CODE=`echo FP-$CODEBUILD_SOURCE_VERSION | sed 's/\///'`
       - printenv
   build:
-    commands:
+    commands:      
       - aws cloudformation package --template-file template.yaml --s3-bucket grimlocks-testing --output-template-file packaged.yaml
       - aws cloudformation deploy --template-file packaged.yaml --stack-name $PR_UNIQUE_CODE --capabilities CAPABILITY_IAM
