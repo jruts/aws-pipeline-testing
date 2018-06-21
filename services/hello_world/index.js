@@ -1,6 +1,6 @@
-const handler = (event, context) => ({
+const handler = async (event, context) => ({
   statusCode: 200,
-  body: 'Lambda one is ready for liftoff!',
-});
+  body: 'blablabla',
+})
 
 module.exports.handler = handler;
